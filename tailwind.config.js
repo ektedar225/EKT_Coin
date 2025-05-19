@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+<<<<<<< HEAD
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+=======
+  content: ['./index.html', './blockchain/**/*.{js,ts,jsx,tsx}'],
+>>>>>>> e1a9e0f540182b546222ccebbf7f71baa6ae51b4
   theme: {
     extend: {
       colors: {

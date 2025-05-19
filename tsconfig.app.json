@@ -20,5 +20,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+<<<<<<< HEAD
   "include": ["src"]
+=======
+  "include": ["blockchain"]
+>>>>>>> e1a9e0f540182b546222ccebbf7f71baa6ae51b4
 }
