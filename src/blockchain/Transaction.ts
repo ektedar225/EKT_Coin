@@ -3,5 +3,4 @@ export interface Transaction {
   recipient: string;
   amount: number;
   timestamp: number;
-  signature?: string;
 }

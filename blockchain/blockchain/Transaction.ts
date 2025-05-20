@@ -3,7 +3,4 @@ export interface Transaction {
   recipient: string;
   amount: number;
   timestamp: number;
-  signature?: string;
-  status: 'success' | 'failed';
-  failureReason?: string;
 }

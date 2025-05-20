@@ -11,7 +11,7 @@ export class Blockchain {
     this.chain = [this.createGenesisBlock()];
     this.difficulty = 4;
     this.pendingTransactions = [];
-    this.miningReward = 50; // 50 Ektedar coins reward
+    this.miningReward = 1; // 1 Ektedar coin reward
   }
 
   private createGenesisBlock(): Block {
@@ -65,6 +65,24 @@ export class Blockchain {
       throw new Error('Transaction amount must be positive');
     }
 
+    // Only apply network fee for normal transactions, not for initial funding from 'network'
+    const isInitialFunding = transaction.sender === 'network';
+    const networkFee = 2;
+    if (!isInitialFunding && (transaction.amount + networkFee > this.getBalanceOfAddress(transaction.sender))) {
+      throw new Error('Insufficient balance for transaction and network fee');
+    }
+
+    if (!isInitialFunding) {
+      // Add fee transaction to network
+      this.pendingTransactions.push({
+        sender: transaction.sender,
+        recipient: 'network',
+        amount: networkFee,
+        timestamp: Date.now()
+      });
+    }
+
+    // Add user transaction (or initial funding)
     this.pendingTransactions.push(transaction);
   }
 
